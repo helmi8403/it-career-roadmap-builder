@@ -18,6 +18,23 @@
   </style>
   <style>.career-map{display:grid;gap:16px}.map-lane{background:rgba(16,31,54,.9);border:1px solid var(--line);border-radius:19px;padding:18px}.map-lane h3{margin:0 0 5px}.map-lane>p{color:var(--muted);margin:0 0 16px}.map-flow{display:flex;align-items:center;gap:8px;overflow:auto;padding:4px 0}.role-node{min-width:145px;border:1px solid var(--blue);background:#09182a;color:var(--text);border-radius:13px;padding:11px 13px;font-weight:800;cursor:pointer;text-align:center}.role-node:hover,.role-node:focus{border-color:var(--mint);color:var(--mint)}.map-arrow{color:var(--mint);font-weight:900;font-size:1.25rem}.transition-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.transition{background:#09182a;border:1px solid var(--line);border-radius:12px;padding:12px}.transition strong{color:var(--blue);display:block;margin-bottom:4px}.transition span{color:var(--muted);font-size:.9rem}@media(max-width:760px){.transition-grid{grid-template-columns:1fr}.role-node{min-width:132px}}</style>
   <style>.summary .pill:last-child{flex-basis:100%;border-radius:14px;line-height:1.45}.career-choice{grid-column:1/-1;background:#071426;border:1px solid #355779;border-radius:13px;padding:14px}.career-choice label{display:block;color:var(--mint);font-weight:850;margin-bottom:7px}.career-choice select{min-height:50px}.salary-compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.pay-option,.move-requirements{background:#0c1d32;border:1px solid var(--line);border-radius:11px;padding:12px}.pay-option strong,.move-requirements strong{display:block;color:var(--blue);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}.pay-amount{font-size:1.05rem;font-weight:900;color:var(--text)}.move-requirements{grid-column:1/-1;color:#d9e4f2}.move-requirements p{margin:5px 0;color:#d9e4f2}.career-move-btn{margin-top:10px;border:1px solid var(--mint);background:transparent;color:var(--mint);border-radius:9px;padding:10px 12px;font-weight:850;cursor:pointer}.salary-note{grid-column:1/-1;color:var(--muted);font-size:.78rem;margin:0}@media(max-width:760px){.salary-compare{grid-template-columns:1fr}.move-requirements,.salary-note{grid-column:1}}</style>
+  <style>
+    body{background:radial-gradient(ellipse at 5% 0%,rgba(29,137,161,.24),transparent 38%),radial-gradient(ellipse at 100% 20%,rgba(64,88,185,.2),transparent 40%),#081427}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(rgba(101,167,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(101,167,255,.035) 1px,transparent 1px);background-size:64px 64px}
+    .hero{background:linear-gradient(125deg,rgba(8,20,39,.96),rgba(8,20,39,.79)),url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=75') center/cover;border-color:#356077}
+    .hero h1{font-size:clamp(2rem,5vw,3.65rem)}
+    .path-images{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:20px 0 0}
+    .path-image{margin:0;position:relative;overflow:hidden;border:1px solid #35516f;border-radius:16px;background:#101f36}
+    .path-image img{display:block;width:100%;height:135px;object-fit:cover;opacity:.8;transition:transform .3s ease}
+    .path-image figcaption{position:absolute;inset:auto 0 0;padding:32px 14px 12px;background:linear-gradient(transparent,rgba(5,15,30,.98));font-weight:800;font-size:1rem;color:#fff}
+    .path-image:hover img{transform:scale(1.035)}
+    .site-footer{width:min(1084px,calc(100% - 36px));margin:0 auto;padding:30px 0 35px;border-top:1px solid #34506c;display:flex;justify-content:space-between;gap:28px;color:var(--muted);font-size:.875rem}
+    .site-footer .brand{color:var(--text);font-size:1rem}.site-footer p{margin:7px 0;max-width:580px}.site-footer a{color:var(--mint);text-underline-offset:3px}.footer-credit{text-align:right}
+    .shell{padding-bottom:42px}
+    @media(max-width:760px){.path-images{gap:8px}.path-image img{height:105px}.path-image figcaption{font-size:.875rem;line-height:1.3;padding:28px 9px 10px}.site-footer{display:block}.footer-credit{text-align:left;margin-top:18px}.hero h1{font-size:2.25rem}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fade{animation:none}.path-image img,.progress-bar{transition:none}.path-image:hover img{transform:none}}
+    @media print{.path-images{display:none}.hero{background:#fff}.site-footer{color:#455365;border-color:#ccc}.site-footer .brand{color:#172033}body:before{display:none}}
+  </style>
 </head>
 <body>
   <main class="shell">
@@ -25,6 +42,11 @@
     <section class="intro">
       <div class="hero"><p class="eyebrow">Start with one clear direction</p><h1 id="heroTitle">Your path to IT Support</h1><p id="heroCopy">Build practical troubleshooting skills, complete proof-of-work projects and prepare for an entry-level support role.</p></div>
       <div class="chooser"><label for="role">Choose your beginner starting role</label><div class="select-wrap"><select id="role"><option value="support">IT Support Specialist</option><option value="developer">Software Developer</option><option value="datacenter">Data Center Technician</option></select></div><small>Advanced roles appear later in the Career Map after you gain enough experience.</small></div>
+    </section>
+    <section class="path-images" aria-label="Three ways to start your IT career">
+      <figure class="path-image"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=600&amp;q=75" width="600" height="300" alt="Close-up of computer circuitry" decoding="async"><figcaption>IT Support</figcaption></figure>
+      <figure class="path-image"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=600&amp;q=75" width="600" height="300" alt="Laptop with a software development workspace" decoding="async"><figcaption>Software Development</figcaption></figure>
+      <figure class="path-image"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&amp;fit=crop&amp;w=600&amp;q=75" width="600" height="300" alt="Rows of server racks in a data center" decoding="async"><figcaption>Data Center Operations</figcaption></figure>
     </section>
     <div class="summary" id="summary"></div>
     <section class="progress-wrap" aria-label="Roadmap progress"><div class="progress-row"><span>Roadmap progress</span><span id="progressLabel">0 of 5 complete</span></div><div class="progress-track"><div id="progressBar" class="progress-bar"></div></div></section>
@@ -34,7 +56,12 @@
     <section id="resources" class="view"><div class="section-head"><div><p class="eyebrow">Learn by doing</p><h2>Recommended training</h2></div><p>Use one main course at a time, then turn each topic into a small project or lab.</p></div><div class="grid" id="resourceGrid"></div></section>
     <div class="actions"><button class="btn" onclick="window.print()">Print or save as PDF</button><button class="btn secondary" id="reset">Reset progress</button></div>
   </main>
+  <footer class="site-footer">
+    <div><div class="brand">IT Career Roadmap Builder</div><p>Created by Helmi Rahman.</p><p>Career guidance and salary estimates are for planning only. Check current requirements with employers and certification providers.</p></div>
+    <div class="footer-credit"><p>© <span id="copyrightYear">2026</span> Helmi Rahman. All rights reserved.</p><p>Third-party trademarks and images belong to their respective owners.</p><p>Photography from <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.</p></div>
+  </footer>
   <script>
+  document.querySelector('#copyrightYear').textContent=new Date().getFullYear();
   const roles={
     support:{name:'IT Support Specialist',short:'IT Support',time:'12–16 weeks',level:'Beginner friendly',copy:'Build practical troubleshooting skills, complete proof-of-work projects and prepare for an entry-level support role.',steps:[
       ['Learn computer fundamentals','Understand hardware, operating systems, files, users and common peripherals.',['Hardware','Windows','macOS basics']],
