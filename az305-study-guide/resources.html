@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Learning resources and final checklist | AZ-305 Study Guide</title><meta name="description" content="AZ-305 architecture study guide, chapter navigation and original study lessons"><style>
+@page { size: A4; margin: 21mm 19mm 19mm; @top-right {content:"AZ-305  |  Principal Architect Study Guide"; font-size:8pt; color:#789;} @bottom-right { content:"Page " counter(page); font-size:8pt; color:#789; } }
+body { font-family: "DejaVu Sans", sans-serif; font-size:9.1pt; line-height:1.49; color:#1f3143; }
+h1 {color:#123c63;font-size:25pt;line-height:1.16;margin:0 0 16pt;border-bottom:4pt solid #26a5b4;padding-bottom:13pt;}
+h2 { font-size:15.5pt; color:#103c5f; padding-bottom:5pt; border-bottom:1px solid #d5e2eb; margin:23pt 0 11pt; break-after:avoid; }
+h3 { color:#146381; font-size:11pt; margin:14pt 0 6pt;break-after:avoid; }
+p { margin:7pt 0 10pt; } strong {color:#153c59} a {color:#087f94; text-decoration:none; overflow-wrap:anywhere} code { font-family:DejaVu Sans Mono, monospace; font-size:8pt; }
+blockquote {border-left:3pt solid #e39a49; background:#fff8ed; padding:10pt 12pt; margin:12pt 0 16pt;}
+blockquote p {margin:0;}
+ul,ol {padding-left:19pt; margin:7pt 0 11pt; } li {margin-bottom:5pt;}
+table { width:100%; border-collapse:collapse; table-layout:auto; font-size:7.7pt; margin:11pt 0 17pt; break-inside:auto; }
+th {background:#123c5b;color:#fff;font-weight:700;text-align:left;padding:7pt 6pt;}
+td {border-bottom:1px solid #dae4ec;padding:6pt 6pt; vertical-align:top; overflow-wrap:anywhere;}
+tr:nth-child(even) td{background:#f4f8fb} tr {break-inside:avoid;}
+hr {border:0;border-top:2pt solid #dceaf0;margin:22pt 0;}
+hr + h2 {break-before:page;}
+input[type=checkbox] { accent-color:#0e7490;}
+
+hr {display:none}
+hr + h2 {break-before:page}
+figure {border:1px solid #d5e2eb;border-radius:10px;background:white;margin:13pt 0 18pt;padding:9pt 9pt 7pt;break-inside:avoid;page-break-inside:avoid;}
+figure img {display:block;width:100%;max-height:139mm;height:auto;object-fit:contain; margin:0 auto;}
+figcaption {border-top:1px solid #e0ebf2;padding:7pt 3pt 2pt;margin-top:7pt;font-size:7.7pt;line-height:1.46;color:#37566b;}
+figcaption b{color:#133d5d}.source-tag{display:block;font-style:italic;font-size:7pt;color:#68798b;margin-top:3pt;}
+figure.source-figure{background:#fcfdff;}figure.source-figure img{max-height:128mm;width:auto;max-width:100%;}
+@media screen {body{max-width:920px;margin:26px auto;padding:30px;background:#fff}figure{box-shadow:0 5px 20px #163a5d17}}
+
+@media screen { figure.architecture-figure { overflow:hidden; } figure.architecture-figure img { max-height:680px; width:auto; max-width:100%; object-fit:contain; } figure.architecture-figure figcaption { font-size:12px; } }
+
+.official-azure-note{border-left:4px solid #0078d4;background:#eef6fc;color:#17466c;padding:10px 14px;margin:12px 0;font-size:12px;line-height:1.55;}
+
+:root{--blue:#0e4f79;--navy:#0d3152;--sea:#087f94;--border:#d4e4ef;--back:#f2f6fa;--text:#21374a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:115px}
+body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-size:15px;line-height:1.7;background:var(--back);padding:0!important;margin:0!important;max-width:none!important;color:var(--text)}
+h1{font-size:clamp(27px,3.4vw,42px);border:none;padding:0;margin:12px 0 18px;letter-spacing:-.8px}
+h2{font-size:clamp(20px,2.4vw,28px);margin:26px 0 14px}
+h3{font-size:19px}
+.site-header{position:sticky;top:0;z-index:45;background:#fff;border-bottom:1px solid #d0e0ea;box-shadow:0 2px 15px #163b5514}
+.site-header-inner{max-width:1240px;margin:auto;padding:11px 25px 5px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--navy);font-weight:800;font-size:16px;text-decoration:none;white-space:nowrap}
+.brand-mark{display:inline-grid;place-items:center;width:39px;height:39px;border-radius:10px;background:linear-gradient(140deg,#0b447c,#158ab3);color:#fff;font-size:12px;font-weight:850;letter-spacing:.3px}
+.brand small{display:block;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#63798a;font-weight:650}
+.site-links{display:flex;gap:13px;align-items:center;font-size:13px}
+.site-links a{font-weight:650;color:#1f5675;text-decoration:none;white-space:nowrap}
+.chapter-nav{max-width:1240px;margin:auto;padding:0 20px;display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:thin;white-space:nowrap}
+.chapter-nav a{display:inline-block;color:#325d79;text-decoration:none;padding:12px 11px;border-bottom:3px solid transparent;font-size:13px;font-weight:700;white-space:nowrap;flex-shrink:0}
+.chapter-nav a:hover{color:#0a668d;background:#f4f9fc}
+.chapter-nav a[aria-current="page"]{color:#075e83;border-color:#0f94b9;background:#eef7fc}
+.mobile-jump{display:none;width:100%;padding:10px 12px;border:1px solid #c0d7e6;border-radius:9px;background:#fff;color:var(--navy);font-weight:650;font-size:14px;line-height:1.4;font-family:inherit}
+.page-wrapper{max-width:1180px;margin:0 auto;padding:27px 22px 46px}
+article{background:#fff;padding:clamp(22px,4vw,46px);border:1px solid #dce8ef;box-shadow:0 12px 38px #193e5710;border-radius:17px}
+.eyebrow{text-transform:uppercase;letter-spacing:1.1px;font-size:12px;font-weight:800;color:#167d9e}
+.intro-subtitle{font-size:16px;color:#537081;max-width:900px}
+.intro-note{color:#466477;font-size:14px;background:#f3f9fd;padding:12px 15px;border-left:4px solid #298cbd;border-radius:6px}
+.content-section{padding-top:5px;margin:28px 0 20px}
+.content-section + .content-section{border-top:1px solid #e5edf2;margin-top:32px;padding-top:18px}
+.content-section > h2:first-child{margin-top:4px}
+figure{max-width:100%;overflow-x:auto}
+figure img{max-width:100%;height:auto}
+.figure-source{font-size:12px;color:#567387}
+.chapter-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0 30px}
+.chapter-link-card{display:block;text-decoration:none;color:#1c445e;background:#f7fbfd;border:1px solid #cfdfec;border-radius:11px;padding:16px 17px;transition:background .15s,border .15s}
+.chapter-link-card:hover{background:#ebf7fc;border-color:#7ac3df}
+.chapter-link-card b{display:block;font-size:14px;color:#103f61}
+.chapter-link-card span{display:block;font-size:12px;color:#647c8c;margin-top:5px}
+.page-controls{display:flex;gap:12px;justify-content:space-between;align-items:stretch;margin:25px 0 2px}
+.page-controls a{background:#fff;border:1px solid #c5ddeb;border-radius:11px;text-decoration:none;color:#154a6f;padding:14px 18px;flex:1;max-width:48%;display:flex;flex-direction:column;justify-content:center}
+.page-controls a:hover{background:#eaf6fc;border-color:#8bc0db}
+.page-controls .next{text-align:right;margin-left:auto}
+.page-controls small{display:block;color:#6b8293;font-weight:650;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+.page-controls strong{display:block;font-size:14px;line-height:1.5}
+.page-meta{display:flex;gap:12px;flex-wrap:wrap;align-items:center;color:#668094;font-size:12px;margin:9px 0 22px}
+.page-footer{max-width:1180px;margin:auto;padding:18px 22px 33px;font-size:12px;color:#668095;text-align:center}
+.chapter-index-title{font-size:22px;color:#154a68;margin-bottom:0}
+#review{scroll-margin-top:125px}
+@media(max-width:850px){.chapter-nav{padding:0 10px}.site-header-inner{padding:12px 15px 8px}.site-links{font-size:12px}.page-wrapper{padding:12px 10px 30px}.chapter-grid{grid-template-columns:1fr}}
+@media(max-width:580px){.chapter-nav{display:none}.mobile-jump{display:block}.site-header-inner{gap:9px}.site-links{width:100%;justify-content:space-between}.brand{font-size:14px}article{padding:18px 15px}table{display:block;overflow-x:auto;width:100%}.page-controls a{padding:10px 11px}.page-controls strong{font-size:12px}.page-meta{font-size:11px}}
+@media print{.site-header,.page-controls,.page-footer,.chapter-grid{display:none!important}.page-wrapper{max-width:none;padding:0}article{box-shadow:none;border:0;padding:0}body{background:#fff!important;font-size:9pt!important} .content-section{break-before:auto!important}}
+</style></head><body><header class="site-header"><div class="site-header-inner"><a class="brand" href="index.html"><span class="brand-mark">AZ305</span><span>Azure Solutions Architect<small>Interactive study guide</small></span></a><div class="site-links"><a href="index.html">Home</a><a href="https://helmi8403.github.io/it-career-roadmap-builder/az305-cue-cards/">Cue cards</a><a href="https://helmi8403.github.io/it-career-roadmap-builder/az305-litware-cue-cards/">Litware</a></div><select class="mobile-jump" aria-label="Jump to a chapter" onchange="if(this.value)window.location.href=this.value"><option value="index.html">Overview — Study overview</option><option value="chapter-01.html">Chapter 1 — 01 | Architect mindset, governance and identity</option><option value="chapter-02.html">Chapter 2 — 02 | Observability, logging and security operations</option><option value="chapter-03.html">Chapter 3 — 03 | Networking and connectivity architecture</option><option value="chapter-04.html">Chapter 4 — 04 | Compute, containers and application integration</option><option value="chapter-05.html">Chapter 5 — 05 | Data platforms, storage and analytics</option><option value="chapter-06.html">Chapter 6 — 06 | Resilience, backup and disaster recovery</option><option value="chapter-07.html">Chapter 7 — 07 | Migration, landing zones and the architecture case study</option><option value="chapter-08.html">Chapter 8 — 08 | Synthesis, exam technique and readiness</option><option value="practice.html">Practice — Practice, calendar and Litware</option><option value="labs.html">Labs — Technology updates, labs and worked scenarios</option><option value="resources.html" selected>Resources — Learning resources and final checklist</option></select></div><nav class="chapter-nav" aria-label="Study guide chapters"><a href="index.html">Overview</a><a href="chapter-01.html">Chapter 1</a><a href="chapter-02.html">Chapter 2</a><a href="chapter-03.html">Chapter 3</a><a href="chapter-04.html">Chapter 4</a><a href="chapter-05.html">Chapter 5</a><a href="chapter-06.html">Chapter 6</a><a href="chapter-07.html">Chapter 7</a><a href="chapter-08.html">Chapter 8</a><a href="practice.html">Practice</a><a href="labs.html">Labs</a><a href="resources.html" aria-current="page">Resources</a></nav></header><main class="page-wrapper"><article><span class="eyebrow">Resources · AZ-305</span><h1>Learning resources and final checklist</h1><p class="page-meta"><span>Official Azure reference diagrams</span><span>·</span><span>Study guide prepared October 2026</span></p>
+<section class="content-section" id="chapter-23"><h2>Learning resources reviewed (official + independent)</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Role</th>
+<th>Freshness caveat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Microsoft official exam + 2026 skills guide</td>
+<td>Must-use authoritative blueprint; compare last update before exam / Free</td>
+<td>Official: current</td>
+</tr>
+<tr>
+<td>Microsoft Learn learning paths</td>
+<td>Structured objective coverage and prerequisite modules / Free</td>
+<td>Official: current</td>
+</tr>
+<tr>
+<td>Microsoft Azure Architecture Center</td>
+<td>Reference architectures, decision rationale, deployment examples / Free</td>
+<td>Official: current</td>
+</tr>
+<tr>
+<td>Azure Well-Architected Framework</td>
+<td>Reliability, security, cost, operations, performance reviews / Free</td>
+<td>Official: current</td>
+</tr>
+<tr>
+<td>Cloud Adoption Framework / landing zones</td>
+<td>Governance, subscriptions, landing zones and IaC / Free</td>
+<td>Official: current</td>
+</tr>
+<tr>
+<td>Microsoft Practice Assessment</td>
+<td>First-attempt benchmarking and per-question rationale / Free</td>
+<td>Official: current</td>
+</tr>
+<tr>
+<td>John Savill AZ-305 Study Playlist</td>
+<td>Strong architecture explanations; older footage so validate limits / Free video</td>
+<td>Independent: historic videos</td>
+</tr>
+<tr>
+<td>Tutorials Dojo study guide</td>
+<td>Extra comparison notes and scenario explanations; check 2026 changes / Free article</td>
+<td>Independent: older pages</td>
+</tr>
+<tr>
+<td>Tutorials Dojo AZ-305 practice exams</td>
+<td>Format practice: timed, review, section, hotspot/drag-drop / Paid, check price</td>
+<td>Independent: verify recent update</td>
+</tr>
+<tr>
+<td>Pluralsight AZ-305 path</td>
+<td>Organized courses/quizzes/labs; verify course updated since blueprint / Subscription</td>
+<td>Independent: mixed-age courses</td>
+</tr>
+<tr>
+<td>Whizlabs AZ-305</td>
+<td>Additional practice sets; useful for varied phrasing / Paid / trials vary</td>
+<td>Independent: check freshness</td>
+</tr>
+<tr>
+<td>MeasureUp AZ-305</td>
+<td>Exam-like baseline; inspect update date before buying / Paid</td>
+<td>Independent: some product versions older</td>
+</tr>
+<tr>
+<td>Azure Cache for Redis FAQ</td>
+<td>Retirement and Azure Managed Redis migration design / Free</td>
+<td>Official: current</td>
+</tr>
+<tr>
+<td>PostgreSQL Elastic Cluster migration</td>
+<td>Replaces retired Cosmos DB for PostgreSQL deployment path / Free</td>
+<td>Official: current</td>
+</tr>
+<tr>
+<td>Hub-spoke reference architecture</td>
+<td>Concrete hybrid routing, firewall and DNS example / Free</td>
+<td>Official: current</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><strong>Microsoft official exam + 2026 skills guide:</strong> <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-305">https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-305</a> — Must-use authoritative blueprint; compare last update before exam. Official: current.</p>
+</li>
+<li><p><strong>Microsoft Learn learning paths:</strong> <a href="https://learn.microsoft.com/en-us/credentials/certifications/exams/az-305/">https://learn.microsoft.com/en-us/credentials/certifications/exams/az-305/</a> — Structured objective coverage and prerequisite modules. Official: current.</p>
+</li>
+<li><p><strong>Microsoft Azure Architecture Center:</strong> <a href="https://learn.microsoft.com/en-us/azure/architecture/">https://learn.microsoft.com/en-us/azure/architecture/</a> — Reference architectures, decision rationale, deployment examples. Official: current.</p>
+</li>
+<li><p><strong>Azure Well-Architected Framework:</strong> <a href="https://learn.microsoft.com/en-us/azure/well-architected/what-is-well-architected-framework">https://learn.microsoft.com/en-us/azure/well-architected/what-is-well-architected-framework</a> — Reliability, security, cost, operations, performance reviews. Official: current.</p>
+</li>
+<li><p><strong>Cloud Adoption Framework / landing zones:</strong> <a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/enterprise-scale/">https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/enterprise-scale/</a> — Governance, subscriptions, landing zones and IaC. Official: current.</p>
+</li>
+<li><p><strong>Microsoft Practice Assessment:</strong> <a href="https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications">https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications</a> — First-attempt benchmarking and per-question rationale. Official: current.</p>
+</li>
+<li><p><strong>John Savill AZ-305 Study Playlist:</strong> <a href="https://www.youtube.com/playlist?list=PLlVtbbG169nHSnaP4ae33yQUI3zcmP5nP">https://www.youtube.com/playlist?list=PLlVtbbG169nHSnaP4ae33yQUI3zcmP5nP</a> — Strong architecture explanations; older footage so validate limits. Independent: historic videos.</p>
+</li>
+<li><p><strong>Tutorials Dojo study guide:</strong> <a href="https://tutorialsdojo.com/az-305-microsoft-azure-solutions-architect-expert-exam-study-guide/">https://tutorialsdojo.com/az-305-microsoft-azure-solutions-architect-expert-exam-study-guide/</a> — Extra comparison notes and scenario explanations; check 2026 changes. Independent: older pages.</p>
+</li>
+<li><p><strong>Tutorials Dojo AZ-305 practice exams:</strong> <a href="https://tutorialsdojo.com/courses/az-305-microsoft-azure-infrastructure-solutions-practice-exams/">https://tutorialsdojo.com/courses/az-305-microsoft-azure-infrastructure-solutions-practice-exams/</a> — Format practice: timed, review, section, hotspot/drag-drop. Independent: verify recent update.</p>
+</li>
+<li><p><strong>Pluralsight AZ-305 path:</strong> <a href="https://www.pluralsight.com/paths/az-305-designing-microsoft-azure-infrastructure-solutions">https://www.pluralsight.com/paths/az-305-designing-microsoft-azure-infrastructure-solutions</a> — Organized courses/quizzes/labs; verify course updated since blueprint. Independent: mixed-age courses.</p>
+</li>
+<li><p><strong>Whizlabs AZ-305:</strong> <a href="https://www.whizlabs.com/designing-microsoft-azure-infrastructure-solutions-az-305/">https://www.whizlabs.com/designing-microsoft-azure-infrastructure-solutions-az-305/</a> — Additional practice sets; useful for varied phrasing. Independent: check freshness.</p>
+</li>
+<li><p><strong>MeasureUp AZ-305:</strong> <a href="https://www.measureup.com/assessment-az-305-designing-microsoft-azure-infrastructure-solutions.html">https://www.measureup.com/assessment-az-305-designing-microsoft-azure-infrastructure-solutions.html</a> — Exam-like baseline; inspect update date before buying. Independent: some product versions older.</p>
+</li>
+<li><p><strong>Azure Cache for Redis FAQ:</strong> <a href="https://learn.microsoft.com/en-us/azure/azure-cache-for-redis/retirement-faq">https://learn.microsoft.com/en-us/azure/azure-cache-for-redis/retirement-faq</a> — Retirement and Azure Managed Redis migration design. Official: current.</p>
+</li>
+<li><p><strong>PostgreSQL Elastic Cluster migration:</strong> <a href="https://learn.microsoft.com/en-us/azure/cosmos-db/postgresql/migrate-postgresql-elastic-cluster">https://learn.microsoft.com/en-us/azure/cosmos-db/postgresql/migrate-postgresql-elastic-cluster</a> — Replaces retired Cosmos DB for PostgreSQL deployment path. Official: current.</p>
+</li>
+<li><p><strong>Hub-spoke reference architecture:</strong> <a href="https://learn.microsoft.com/en-us/azure/architecture/networking/architecture/hub-spoke">https://learn.microsoft.com/en-us/azure/architecture/networking/architecture/hub-spoke</a> — Concrete hybrid routing, firewall and DNS example. Official: current.</p>
+</li>
+</ul>
+<h3>Suggested resource stack by budget</h3>
+<p><strong>Free core:</strong> official Microsoft Learn + Architecture Center + Well-Architected Framework + free Microsoft practice assessment + John Savill study playlist. <strong>Optional paid practice:</strong> choose <em>one</em> of Tutorials Dojo, MeasureUp or Whizlabs only after checking the content refresh date against April 2026. <strong>Optional structured subscription:</strong> Pluralsight if you need a sequenced curriculum rather than only practice questions. Do not buy all vendors; varied high-quality questions are more useful than repeated dumps.</p>
+</section>
+<section class="content-section" id="chapter-24"><h2>Final checklist</h2>
+<ul>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="" type="checkbox"/>I can map all four official domains to architecture decisions.</p>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="" type="checkbox"/>I can distinguish Azure RBAC, Entra roles, PIM, access reviews and Conditional Access.</p>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="" type="checkbox"/>I can draw DNS and traffic paths through private endpoints and hybrid networks.</p>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="" type="checkbox"/>I can choose SQL tiers, storage redundancy and migration methods based on limits.</p>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="" type="checkbox"/>I can justify AKS vs Container Apps vs App Service vs Functions.</p>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="" type="checkbox"/>I can distinguish queues, events, streams, backups, replication and failover groups.</p>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="" type="checkbox"/>I can explain RTO, RPO, recovery testing and business continuity assumptions.</p>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="" type="checkbox"/>I have reviewed the Litware case facts and answered all 12 items blindly.</p>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="" type="checkbox"/>I excluded unverified or missing-source questions from self-scoring.</p>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="" type="checkbox"/>I completed two fresh timed mocks and addressed weak official domains.</p>
+</li>
+</ul>
+<p><strong>Source transparency:</strong> Exam weights, certification requirements and framework terminology were verified against official Microsoft sites on 24 October 2026. Non-Microsoft providers were reviewed for learning format and supplementary use; their pages vary in age and do not supersede the current official skills outline. The question-bank review status is based on the user-provided AZ-305 files, not Microsoft grading.</p>
+</section></article><nav class="page-controls" aria-label="Previous and next chapters"><a class="prev" href="labs.html"><small>← Previous</small><strong>Technology updates, labs and worked scenarios</strong></a></nav></main><footer class="page-footer">AZ-305 Architect Study Guide · Use current Microsoft Learn documentation to validate changing Azure features and limits.</footer></body></html>
