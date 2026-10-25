@@ -14,7 +14,7 @@
 .chapter-pill{background:#e6f4fb;color:#165477}
 @media(max-width:800px){.tools{grid-template-columns:1fr 1fr}.tools #query{grid-column:1/-1}}
 @media(max-width:480px){.curriculum{padding:10px}.tools{grid-template-columns:1fr 1fr}.tools #chapter{grid-column:1/-1}}
-</style></head><body><div class="az305-resource-links" style="padding:9px 18px;text-align:center;background:#e6f0f7;color:#163f5f;font-size:14px;font-weight:600"><a href="../az305-study-guide/" style="color:#155c81">Study Guide</a> &nbsp;·&nbsp; <a href="../az305-cue-cards/" style="color:#155c81">346 Question Cards</a> &nbsp;·&nbsp; <a href="../az305-litware-cue-cards/" style="color:#155c81">Litware Case Study</a></div><header><div><h1>AZ-305 · Cue Cards by Study Guide Chapter</h1><p>346 practice questions · Browse chapters, topics and mixed revision</p></div><div class="counter" id="progressCounter">Question 1 / 346</div></header>
+.response-editor{margin-top:20px;display:grid;gap:10px}.response-field{display:flex;flex-direction:column;gap:5px;font-size:14px;font-weight:650;color:#164365}.response-input{font-weight:400}.response-editor .info{margin:0 0 7px}.question-table{width:100%;border-collapse:collapse;margin:14px 0}.question-table th,.question-table td{padding:10px;border:1px solid #d1dce6;text-align:left}</style></head><body><div class="az305-resource-links" style="padding:9px 18px;text-align:center;background:#e6f0f7;color:#163f5f;font-size:14px;font-weight:600"><a href="../az305-study-guide/" style="color:#155c81">Study Guide</a> &nbsp;·&nbsp; <a href="../az305-cue-cards/" style="color:#155c81">346 Question Cards</a> &nbsp;·&nbsp; <a href="../az305-litware-cue-cards/" style="color:#155c81">Litware Case Study</a></div><header><div><h1>AZ-305 · Cue Cards by Study Guide Chapter</h1><p>346 practice questions · Browse chapters, topics and mixed revision</p></div><div class="counter" id="progressCounter">Question 1 / 346</div></header>
 <main class="container">
 <nav class="curriculum" aria-label="Study guide chapter navigation">
 <div class="curriculum-header"><span class="curriculum-title">Browse by study guide chapter</span><a class="study-link" href="../az305-study-guide/">Open study guide ↗</a></div>
@@ -85,23 +85,26 @@ function refreshChapterNav(){let ch=$('#chapter').value;
 function move(d){let a=getFiltered(),i=a.indexOf(currentNumber);if(!a.length)return;currentNumber=a[(i+d+a.length)%a.length];face='front';render()}
 function toggle(l){let n=getNote(currentNumber);n.selected=n.selected||[];let q=QUESTIONS[currentNumber-1];if(q.type==='Multiple Choice'){n.selected=n.selected.includes(l)?n.selected.filter(x=>x!==l):[...n.selected,l]}else{n.selected=n.selected.includes(l)?[]:[l]}if(n.status==='unseen')n.status='studied';save();render()}
 function setStatus(s){getNote(currentNumber).status=s;save();render()}
-function makeExhibits(q){if(!q.layout_exhibits.length)return '';
-  return '<div class="exhibit"><div class="info">Original question exhibit (tap to enlarge)</div>'
-  +q.layout_exhibits.map((name,i)=>{
-     const url=imageUrl(name);
-     return '<details open><summary>Exhibit '+(i+1)+'</summary>'+(url?
-       '<img loading="lazy" src="'+url+'" alt="Original exhibit for question '+q.number+'" data-image="'+esc(name)+'">':
-       '<p class="source-note" role="status">Screenshot not available in the current study package: '+esc(name)+'</p>')+'</details>';
-    }).join('')+'</div>';
+function makeExhibits(q){return ''} // Screenshots intentionally hidden from cue cards.
+function freeformChoices(q,n){
+ const answer=String((ANSWERS[String(q.number)]||{}).answer||'');
+ const count=Math.max(1,Math.min(8,answer.split(/\s*;\s*|\s*→\s*/).filter(Boolean).length));
+ const values=Array.isArray(n.responses)?n.responses:[];
+ const prompts=q.question_text.split(/\n/).map(x=>x.trim()).filter(x=>/^(?:[A-Z][\w ]{1,35}:|(?:row|slot|step|answer)\s*\d+\s*:)/i.test(x)).slice(-8);
+ const countFields=q.type==='Order List'?Math.max(3,count):count;
+ return '<div class="response-editor"><p class="info">Enter your selections for each answer field. Your responses are saved automatically. Use the review side to compare them with the proposed answer.</p>'+
+ Array.from({length:countFields},(_,i)=>'<label class="response-field"><span>'+esc(prompts[i]||((q.type==='Order List'?'Position ':'Selection ')+(i+1)))+'</span><input class="response-input" data-slot="'+i+'" value="'+esc(values[i]||'')+'" placeholder="Type or paste your chosen option" autocomplete="off"></label>').join('')+'</div>'
 }
+
 function render(){const arr=getFiltered();const idx=arr.indexOf(currentNumber);const done=Object.values(notes).filter(s=>s.status&&s.status!=='unseen').length;$('#stats').textContent=done+' studied · '+Object.values(notes).filter(s=>s.status==='known').length+' confident';$('#barfill').style.width=(done/346*100).toFixed(1)+'%';$('#progressCounter').textContent=arr.length?('Card '+(idx+1)+' / '+arr.length):'0 matching cards';refreshChapterNav();if(!arr.length){$('#card').innerHTML='<div class="empty">No cards match these filters. Clear a filter to continue.</div>';return}
 let q=QUESTIONS[currentNumber-1],n=getNote(q.number),research=ANSWERS[String(q.number)]||{},warnings=q.needs_review?'<span class="pill warning">Source review needed</span>':'';
 let meta='<div class="meta"><b>Q'+String(q.number).padStart(3,'0')+'</b><span class="pill chapter-pill">Chapter '+q.study_chapter+'</span><span class="pill">'+esc(q.study_topic)+'</span><span class="pill">'+esc(q.type)+'</span>'+warnings+'<a class="study-link" href="../az305-study-guide/chapter-'+String(q.study_chapter).padStart(2,'0')+'.html" target="_blank" rel="noopener noreferrer">Study topic ↗</a></div>';
 if(face==='front'){
 let opts=q.options.map(o=>'<button class="choice '+((n.selected||[]).includes(o.label)?'active':'')+'" data-choice="'+esc(o.label)+'"><span class="letter">'+esc(o.label)+'</span><span>'+esc(o.text)+'</span></button>').join('');
 let prompt=esc(q.question_text).replace(/\n/g,'<br>');
-$('#card').innerHTML=meta+'<div class="prompt">'+prompt+'</div>'+(opts?'<div class="choices">'+opts+'</div>':'')+makeExhibits(q)+(q.review_flags.length?'<div class="source-note">Study-guide topic assignments are learning classifications, not official Microsoft exam domains. The original Q numbers and source warnings are unchanged. Five question numbers still need more complete screenshots; other flagged cards have source or version cautions. Review is a study recommendation and not an official exam answer key.<br>Review flags: '+esc(q.review_flags.join('; '))+'</div>':'')+'<div class="card-bottom"><span class="tiny">'+((n.selected||[]).length?'Selected: '+esc(n.selected.join(', ')):'Choose an option or work out the response')+'</span><button class="btn primary" id="flip">Flip to review side →</button></div>';
+$('#card').innerHTML=meta+'<div class="prompt">'+prompt+'</div>'+(opts?'<div class="choices">'+opts+'</div>':freeformChoices(q,n))+(q.review_flags.length?'<div class="source-note">Study-guide topic assignments are learning classifications, not official Microsoft exam domains. The original Q numbers and source warnings are unchanged. Five question numbers still need more complete screenshots; other flagged cards have source or version cautions. Review is a study recommendation and not an official exam answer key.<br>Review flags: '+esc(q.review_flags.join('; '))+'</div>':'')+'<div class="card-bottom"><span class="tiny">'+((n.selected||[]).length?'Selected: '+esc(n.selected.join(', ')):(n.responses||[]).some(Boolean)?'Your response saved':'Choose an option or enter a response')+'</span><button class="btn primary" id="flip">Flip to review side →</button></div>';
 $('#card').querySelectorAll('[data-choice]').forEach(b=>b.addEventListener('click',()=>toggle(b.dataset.choice)));
+$('#card').querySelectorAll('.response-input').forEach(el=>el.addEventListener('input',()=>{let state=getNote(currentNumber);state.responses=state.responses||[];state.responses[Number(el.dataset.slot)]=el.value;save()}));
 $('#card').querySelectorAll('img[data-image]').forEach(img=>img.addEventListener('click',()=>openImg(img.dataset.image)));
 }else{
 let answerValue=research.answer||'';
