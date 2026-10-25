@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-25",
+  "total_cards": 346,
+  "source_capture_question_count": 165,
+  "selection_fields_added": 150,
+  "table_cards": 48,
+  "tables": 56,
+  "prompt_rewrites": 28,
+  "capture_gaps": {
+    "105": "The capture obscures part of the action bank. The GRS-before-failover action is restored from the existing proposed answer; the visible ZRS action is retained as a distractor. The exact hidden source wording is unverified.",
+    "81": "The capture obscures part of the subscription and policy tables. The visible rows have been transcribed; the missing rows are not invented.",
+    "122": "The capture obscures the customer-account requirements. Image requirements and the answer choices are visible.",
+    "123": "The capture cuts off part of the question. The matching earlier capture (Q23) supplies the visible shared requirements and table.",
+    "136": "The capture obscures the optimization requirement between the ingestion volume and the question. Do not treat the proposed answer as fully verified.",
+    "152": "The capture obscures the resource-group and user-account tables. The visible subscription and group-membership tables have been transcribed.",
+    "158": "The department table is clipped; the Quality Assurance request is not visible.",
+    "178": "The capture cuts off several image-storage and customer-account requirements. The matching question Q122 is also partly obscured.",
+    "195": "The capture obscures storage-priority rows below Operating system. Those priorities cannot be verified.",
+    "203": "The capture obscures the daily retention value. Weekly, monthly and yearly settings are visible.",
+    "221": "The capture obscures the application-requirements table. The storage-account table and selectable answer choices are visible.",
+    "224": "The case-study authentication and authorization facts are not present in this question capture; part of the Role1 dropdown is covered by the pointer.",
+    "237": "The capture truncates endpoint URLs. The authorization-code selection and answer choices are visible.",
+    "240": "The capture obscures some requirements between the instance table and the no-direct-internet condition.",
+    "249": "The capture obscures the user table. Named locations, Conditional Access policies and Yes/No statements are visible.",
+    "274": "The capture obscures the upper part of the service bank. Azure Event Hubs is restored from the existing proposed answer alongside the three visible services; hidden distractors cannot be verified.",
+    "278": "The capture obscures requirements between the application components and answer area.",
+    "284": "The capture obscures some diagnostic destination settings. The visible log-category settings are transcribed.",
+    "322": "The capture obscures the daily retention value. Weekly, monthly and yearly settings are visible.",
+    "330": "The capture obscures the application-requirements table. The storage-account table and answer choices are visible."
+  },
+  "verification": {
+    "result": {
+      "counts": {
+        "cards": 346,
+        "buttonCards": 196,
+        "fieldCards": 150,
+        "tables": 56
+      },
+      "failures": []
+    },
+    "errors": []
+  }
+}
