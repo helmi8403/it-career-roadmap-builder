@@ -1,0 +1,25 @@
+/* Shared screen typography for the complete AZ-305 study site. */
+@media screen {
+html{font-size:18px!important}
+body{font-size:18px!important;line-height:1.65!important}
+p,li,td,th,blockquote,.prompt,.stem,.note,.opt,.choice,.answer-choice,.answer-order,.response-field,.response-input,input,select,textarea,button,.btn,.button{font-size:18px!important;line-height:1.6!important}
+h1,.deck-heading h1,header h1{font-size:32px!important;line-height:1.25!important}
+h2,.card h2,.back h2,.chapter-index-title{font-size:26px!important;line-height:1.35!important}
+h3,aside h3{font-size:22px!important;line-height:1.4!important}
+h4,#caseinfo .context h4{font-size:20px!important}
+#caseinfo .context p,.context strong{font-size:18px!important;line-height:1.65!important}
+.site-links,.site-links a,.chapter-nav a,.curriculum-nav button,.study-link,.curriculum-title,.chapter-link-card b{font-size:17px!important}
+.brand{font-size:18px!important}.brand small{font-size:12px!important}.brand-mark{font-size:13px!important;width:44px;height:44px}
+small,.tiny,.kbd,.meta,.pill,.tag,.counter,.stat,.info,.hint,.light,.intro-subtitle,.intro-note,.page-meta,.page-footer,.footer,.deck-heading p,.field label,.chapter-link-card span,.refs a,.figure-source,figcaption,.source-tag,.eyebrow,.page-controls small,.page-controls strong,.summary span{font-size:16px!important;line-height:1.55!important}
+table{line-height:1.55!important}th,td{padding:12px!important}
+button,input,select,.btn,.button{min-height:44px}
+.site-links{flex-wrap:wrap;justify-content:flex-end}.site-header-inner{gap:14px}
+.curriculum-nav button,.chapter-nav a{flex-shrink:0}
+.table-wrap,.table-scroll{overflow-x:auto}
+@media(max-width:580px){
+body,p,li,td,th,.prompt,.stem,.note,.choice,.opt,.answer-choice,.response-field,input,select,textarea,button,.btn{font-size:17px!important}
+h1,.deck-heading h1,header h1{font-size:27px!important}h2,.card h2,.back h2{font-size:23px!important}h3{font-size:20px!important}
+.site-links a{font-size:16px!important}.site-links{gap:12px}.brand{font-size:17px!important}
+.deck-heading{flex-wrap:wrap}.question-toolbar .nav{gap:6px}
+}
+}
