@@ -53,7 +53,14 @@ const chapterOrder=()=>QUESTIONS.slice().sort((a,b)=>a.study_chapter-b.study_cha
 let deck=chapterOrder();let currentNumber=deck[0];let face='front';let shuffled=false;
 const $=s=>document.querySelector(s);
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function imageUrl(name){return EMBEDDED[name] || IMAGE_PREFIX+name;}
+function imageUrl(name){
+  // Cue cards keep original source paths; the published embedded bundles use
+  // basenames for images from assets/. Supplemental paths remain unchanged.
+  const key=String(name||'').replace(/\\/g,'/').replace(/^\.\//,'');
+  const candidates=[key,key.replace(/^assets\//,''),key.split('/').pop()];
+  for(const candidate of candidates){if(Object.prototype.hasOwnProperty.call(EMBEDDED,candidate))return EMBEDDED[candidate];}
+  return ''; // do not attempt a broken relative URL when the exhibit is missing
+}
 function getNote(n){if(!notes[n]) notes[n]={selected:[],correct:'',explanation:'',source:'',status:'unseen'};return notes[n]}
 function save(){try{localStorage.setItem(PREFIX,JSON.stringify(notes))}catch(e){console.warn(e)}}
 function getFiltered(){let query=$('#query').value.trim().toLowerCase(),chapter=$('#chapter').value,top=$('#topic').value,typ=$('#type').value,scope=$('#scope').value;
@@ -78,7 +85,15 @@ function refreshChapterNav(){let ch=$('#chapter').value;
 function move(d){let a=getFiltered(),i=a.indexOf(currentNumber);if(!a.length)return;currentNumber=a[(i+d+a.length)%a.length];face='front';render()}
 function toggle(l){let n=getNote(currentNumber);n.selected=n.selected||[];let q=QUESTIONS[currentNumber-1];if(q.type==='Multiple Choice'){n.selected=n.selected.includes(l)?n.selected.filter(x=>x!==l):[...n.selected,l]}else{n.selected=n.selected.includes(l)?[]:[l]}if(n.status==='unseen')n.status='studied';save();render()}
 function setStatus(s){getNote(currentNumber).status=s;save();render()}
-function makeExhibits(q){if(!q.layout_exhibits.length)return '';return '<div class="exhibit"><div class="info">Original table / diagram / hotspot layout (tap to enlarge)</div>'+q.layout_exhibits.map((name,i)=>'<details open><summary>Exhibit '+(i+1)+'</summary><img loading="lazy" src="'+imageUrl(name)+'" alt="Original exhibit for question '+q.number+'" data-image="'+esc(name)+'"></details>').join('')+'</div>'}
+function makeExhibits(q){if(!q.layout_exhibits.length)return '';
+  return '<div class="exhibit"><div class="info">Original question exhibit (tap to enlarge)</div>'
+  +q.layout_exhibits.map((name,i)=>{
+     const url=imageUrl(name);
+     return '<details open><summary>Exhibit '+(i+1)+'</summary>'+(url?
+       '<img loading="lazy" src="'+url+'" alt="Original exhibit for question '+q.number+'" data-image="'+esc(name)+'">':
+       '<p class="source-note" role="status">Screenshot not available in the current study package: '+esc(name)+'</p>')+'</details>';
+    }).join('')+'</div>';
+}
 function render(){const arr=getFiltered();const idx=arr.indexOf(currentNumber);const done=Object.values(notes).filter(s=>s.status&&s.status!=='unseen').length;$('#stats').textContent=done+' studied · '+Object.values(notes).filter(s=>s.status==='known').length+' confident';$('#barfill').style.width=(done/346*100).toFixed(1)+'%';$('#progressCounter').textContent=arr.length?('Card '+(idx+1)+' / '+arr.length):'0 matching cards';refreshChapterNav();if(!arr.length){$('#card').innerHTML='<div class="empty">No cards match these filters. Clear a filter to continue.</div>';return}
 let q=QUESTIONS[currentNumber-1],n=getNote(q.number),research=ANSWERS[String(q.number)]||{},warnings=q.needs_review?'<span class="pill warning">Source review needed</span>':'';
 let meta='<div class="meta"><b>Q'+String(q.number).padStart(3,'0')+'</b><span class="pill chapter-pill">Chapter '+q.study_chapter+'</span><span class="pill">'+esc(q.study_topic)+'</span><span class="pill">'+esc(q.type)+'</span>'+warnings+'<a class="study-link" href="../az305-study-guide/chapter-'+String(q.study_chapter).padStart(2,'0')+'.html" target="_blank" rel="noopener noreferrer">Study topic ↗</a></div>';
@@ -102,7 +117,7 @@ $('#saveNext').onclick=()=>{if(getNote(currentNumber).status==='unseen')getNote(
 }
 $('#flip').onclick=()=>{face=face==='front'?'back':'front';render()};
 }
-function openImg(name){$('#modalBody').innerHTML='<img alt="Original question exhibit" src="'+imageUrl(name)+'">';$('#imageModal').classList.add('show')}
+function openImg(name){const url=imageUrl(name);$('#modalBody').innerHTML=url?'<img alt="Original question exhibit" src="'+url+'">':'<p class="source-note">This exhibit is not available in the current study package.</p>';$('#imageModal').classList.add('show')}
 $('#closeModal').onclick=()=>$('#imageModal').classList.remove('show');$('#imageModal').onclick=e=>{if(e.target.id==='imageModal')$('#imageModal').classList.remove('show')};
 $('#prev').onclick=()=>move(-1);$('#next').onclick=()=>move(1);$('#shuffle').onclick=()=>{deck.sort(()=>Math.random()-.5);shuffled=true;currentNumber=deck[0];face='front';render()};$('#resetOrder').onclick=()=>{deck=QUESTIONS.map(q=>q.number);shuffled=false;currentNumber=deck[0];face='front';updateFilters()};$('#curriculumOrder').onclick=()=>{deck=chapterOrder();shuffled=false;currentNumber=deck[0];face='front';updateFilters()};
 for(let id of ['query','topic','type','scope']){$('#'+id).addEventListener(id==='query'?'input':'change',updateFilters)};
