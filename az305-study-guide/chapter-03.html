@@ -78,6 +78,38 @@ figure img{max-width:100%;height:auto}
 @media(max-width:850px){.chapter-nav{padding:0 10px}.site-header-inner{padding:12px 15px 8px}.site-links{font-size:12px}.page-wrapper{padding:12px 10px 30px}.chapter-grid{grid-template-columns:1fr}}
 @media(max-width:580px){.chapter-nav{display:none}.mobile-jump{display:block}.site-header-inner{gap:9px}.site-links{width:100%;justify-content:space-between}.brand{font-size:14px}article{padding:18px 15px}table{display:block;overflow-x:auto;width:100%}.page-controls a{padding:10px 11px}.page-controls strong{font-size:12px}.page-meta{font-size:11px}}
 @media print{.site-header,.page-controls,.page-footer,.chapter-grid{display:none!important}.page-wrapper{max-width:none;padding:0}article{box-shadow:none;border:0;padding:0}body{background:#fff!important;font-size:9pt!important} .content-section{break-before:auto!important}}
+
+/* Cue-card inspired study layout: consistent across all study pages */
+@media screen {
+:root{--back:#f3f4fa;--navy:#222252;--blue:#5143b6;--sea:#6956d5;--border:#dedcf4;--text:#26334b}
+body{background:linear-gradient(180deg,#f3f3fc,#eef4fa)!important;color:var(--text)}
+.site-header{background:#ffffffed;border-bottom:1px solid #dedcf4;box-shadow:0 3px 16px #39347c12}
+.brand-mark{background:linear-gradient(145deg,#37308c,#7463de)}
+.chapter-nav a[aria-current="page"]{background:#f0edff;border-color:#6654d5;color:#4436a4}
+.chapter-nav a:hover{background:#f5f2ff;color:#4233a2}
+.page-wrapper{max-width:1190px;padding-top:22px}
+article{border:1px solid #e1dff1;background:transparent;box-shadow:none;padding:0;overflow:visible}
+article>.eyebrow,article>h1,article>.intro-subtitle,article>.intro-note,article>.page-meta,article>.chapter-grid,article>.chapter-index-title{margin-left:clamp(17px,3vw,34px);margin-right:clamp(17px,3vw,34px)}
+article>h1{color:#222252}
+article>.intro-note{background:#f0efff;border-left-color:#6654d5}
+.content-section{background:#fff;border:1px solid #dfdef1;border-radius:17px;box-shadow:0 6px 18px #2925630a;padding:clamp(18px,3vw,30px)!important;margin:16px 0!important}
+.content-section+.content-section{border-top:1px solid #dfdef1!important}
+.content-section>h2:first-child{margin-top:0;color:#28266c}
+.content-section h3{color:#4c40a7}
+.chapter-grid{grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:14px}
+.chapter-link-card{border:1px solid #dedaf5;background:#fff;box-shadow:0 5px 13px #25226d0a;border-radius:15px;padding:18px;min-height:92px}
+.chapter-link-card:hover{background:#f5f2ff;border-color:#9f91e9;transform:translateY(-2px)}
+.chapter-link-card b{font-size:15px;color:#2a256a}
+.chapter-link-card span{color:#67658c}
+.page-controls a{border:1px solid #d8d4f3;background:white;box-shadow:0 4px 12px #28256d0a}
+.page-controls a:hover{background:#f4f1ff;border-color:#a39ae7}
+h2{color:#2b286d;border-bottom-color:#e4e1f5}
+blockquote{background:#f6f3ff;border-left-color:#7567d5}
+figure{border-color:#ddd9f2}
+th{background:#343082}
+a{color:#5143b6}
+}
+@media screen and (max-width:580px){.page-wrapper{padding:12px 10px 25px}.content-section{padding:17px!important}.chapter-grid{grid-template-columns:1fr}article>.eyebrow,article>h1,article>.intro-subtitle,article>.intro-note,article>.page-meta,article>.chapter-grid,article>.chapter-index-title{margin-left:15px;margin-right:15px}}
 </style></head><body><header class="site-header"><div class="site-header-inner"><a class="brand" href="index.html"><span class="brand-mark">AZ305</span><span>Azure Solutions Architect<small>Interactive study guide</small></span></a><div class="site-links"><a href="index.html">Home</a><a href="https://helmi8403.github.io/it-career-roadmap-builder/az305-cue-cards/">Cue cards</a><a href="https://helmi8403.github.io/it-career-roadmap-builder/az305-litware-cue-cards/">Litware</a></div><select class="mobile-jump" aria-label="Jump to a chapter" onchange="if(this.value)window.location.href=this.value"><option value="index.html">Overview — Study overview</option><option value="chapter-01.html">Chapter 1 — 01 | Architect mindset, governance and identity</option><option value="chapter-02.html">Chapter 2 — 02 | Observability, logging and security operations</option><option value="chapter-03.html" selected>Chapter 3 — 03 | Networking and connectivity architecture</option><option value="chapter-04.html">Chapter 4 — 04 | Compute, containers and application integration</option><option value="chapter-05.html">Chapter 5 — 05 | Data platforms, storage and analytics</option><option value="chapter-06.html">Chapter 6 — 06 | Resilience, backup and disaster recovery</option><option value="chapter-07.html">Chapter 7 — 07 | Migration, landing zones and the architecture case study</option><option value="chapter-08.html">Chapter 8 — 08 | Synthesis, exam technique and readiness</option><option value="practice.html">Practice — Practice and study calendar</option><option value="labs.html">Labs — Technology updates, labs and worked scenarios</option><option value="resources.html">Resources — Learning resources and final checklist</option></select></div><nav class="chapter-nav" aria-label="Study guide chapters"><a href="index.html">Overview</a><a href="chapter-01.html">Chapter 1</a><a href="chapter-02.html">Chapter 2</a><a href="chapter-03.html" aria-current="page">Chapter 3</a><a href="chapter-04.html">Chapter 4</a><a href="chapter-05.html">Chapter 5</a><a href="chapter-06.html">Chapter 6</a><a href="chapter-07.html">Chapter 7</a><a href="chapter-08.html">Chapter 8</a><a href="practice.html">Practice</a><a href="labs.html">Labs</a><a href="resources.html">Resources</a></nav></header><main class="page-wrapper"><article><span class="eyebrow">Chapter 3 · AZ-305</span><h1>03 | Networking and connectivity architecture</h1><p class="page-meta"><span>Official Azure reference diagrams</span><span>·</span><span>Study guide prepared October 2026</span></p>
 <section class="content-section" id="chapter-10">
 <p><strong>Exam mapping:</strong> Infrastructure (30–35%)</p>
