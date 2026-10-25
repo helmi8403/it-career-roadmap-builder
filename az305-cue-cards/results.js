@@ -13,6 +13,6 @@ function render(){
  document.querySelector('#study').href='./?chapter='+ch;
 }
 document.querySelector('#filter').onchange=render;
-document.querySelector('#reset').onclick=()=>{if(!confirm(ch===8?'Reset ALL 346 questions? This clears all answers, notes and attempt history in this browser.':'Reset Chapter '+ch+'? This clears its answers, notes and attempt history. Other chapters will be preserved.'))return;if(P.reset(ch)){document.querySelector('#message').textContent='Progress reset.';render()}};
+document.querySelector('#reset').onclick=()=>{if(!confirm(ch===8?'Reset ALL 346 questions? This clears all answers, scores and attempt history in this browser.':'Reset Chapter '+ch+'? This clears its answers, scores and attempt history. Other chapters will be preserved.'))return;if(P.reset(ch)){document.querySelector('#message').textContent='Progress reset.';render()}};
 window.addEventListener('storage',render);render();
 })();
