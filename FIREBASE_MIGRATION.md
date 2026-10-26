@@ -1,6 +1,6 @@
 # AZ-305 Firebase migration (staging branch)
 
-Firebase project: `az-305-study-guide`
+Firebase project: `it-career-builder`
 Branch: `feature/az305-firebase-hosting`
 
 ## Current state
@@ -11,12 +11,12 @@ Branch: `feature/az305-firebase-hosting`
 - **Not production ready**: protected lessons, answer-key isolation, server-side grading, admin bootstrap, migration and end-to-end testing are pending.
 
 ## Firebase console setup
-1. Register a Web app in project `az-305-study-guide`.
+1. Register a Web app in project `it-career-builder`.
 2. Copy its `apiKey` and `appId` into `firebase-public/firebase-config.js`; confirm authDomain and projectId.
-3. Enable Authentication > Sign-in method > Google, and add `az-305-study-guide.web.app` (and any custom domain) under Authorized domains.
+3. Enable Authentication > Sign-in method > Google, and add `it-career-builder.web.app` (and any custom domain) under Authorized domains.
 4. Create Cloud Firestore in production mode in a chosen region.
 5. Install Node.js and Firebase CLI: `npm install -g firebase-tools`; `firebase login`.
-6. From repo root: `firebase use az-305-study-guide`; `firebase deploy --only hosting,firestore:rules,firestore:indexes`.
+6. From repo root: `firebase use it-career-builder`; `firebase deploy --only hosting,firestore:rules,firestore:indexes`.
 7. Verify Google login and user profile write. **Do not invite students yet.**
 
 ## Critical security requirements
