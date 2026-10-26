@@ -2,7 +2,7 @@
 // Firebase web config is public configuration, NOT a service-account credential.
 export const firebaseConfig = {
   apiKey: "",
-  authDomain: "az-305-study-guide.firebaseapp.com",
-  projectId: "az-305-study-guide",
+  authDomain: "it-career-builder.firebaseapp.com",
+  projectId: "it-career-builder",
   appId: ""
 };
