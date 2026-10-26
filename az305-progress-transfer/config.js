@@ -1,2 +1,2 @@
-// Set only after the independent LMS staging/production origin has been verified.
-export const platformOrigin=null;
+// Verified independent LMS Hosting origin. No course code is hosted in Career Builder.
+export const platformOrigin='https://certification-study-platform.web.app';
