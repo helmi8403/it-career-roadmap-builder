@@ -35,3 +35,37 @@ Branch: `feature/az305-firebase-hosting`
 
 ## Rollback
 Existing GitHub Pages on `main` remains unaffected. Firebase Hosting deployments can be rolled back using Firebase release history.
+
+## Current integration update
+Google Authentication and Cloud Firestore were reported enabled in Firebase Console. The web-app configuration has been committed to the feature branch. The staging dashboard now creates student profiles and lets signed-in students save eight manual chapter-completion flags in Firestore. The admin section is shown only for an ID token with `admin: true`, but no administrator claim has been assigned yet. The real chapter content, automatic exam grading and attempt-history views have NOT been migrated.
+
+## Deploy staging from your machine
+```bash
+git clone https://github.com/helmi8403/it-career-roadmap-builder.git
+cd it-career-roadmap-builder
+git switch feature/az305-firebase-hosting
+npm install -g firebase-tools
+firebase login
+firebase use it-career-builder
+firebase deploy --only hosting,firestore:rules,firestore:indexes
+```
+Open https://it-career-builder.web.app after successful deployment. If you use an existing local clone, fetch the feature branch instead of cloning again.
+
+## Smoke test
+1. Confirm the sign-in screen is visible before login.
+2. Sign in using a Google account and check that a `users/{uid}` profile is created.
+3. Mark Chapter 1 complete, refresh, and confirm the state persists.
+4. Sign out; confirm the dashboard is hidden.
+5. Sign in with a different Google account; verify Chapter 1 is not marked complete for that account.
+6. Attempt direct unauthenticated Firestore reads; confirm permission denied.
+7. Confirm no study content or answer keys are included in `firebase-public/`.
+8. Confirm the admin panel is hidden for ordinary users.
+
+## Administrator setup
+The single administrator has **not** been assigned. Record the selected admin Firebase Authentication UID in a private deployment record. Use Firebase Admin SDK with trusted application credentials to assign the custom claim `{admin: true}` only to that UID, and remove it from any previous administrator. Never add an admin UID, Admin SDK private key, or service-account JSON to this public repository. Custom claims may require sign-out/sign-in or token refresh before they appear. The current rules check the claim but do not independently guarantee that only one account can ever receive it.
+
+## Limitations
+- Chapter completion is manually recorded; it does not certify lesson mastery.
+- Client-submitted answer attempts are not trusted grades. Production grading requires verified keys and trusted backend processing.
+- Hosting serves files publicly; restricted study materials must not be copied to the Hosting public directory.
+- Firebase services and deployment have not been tested through this GitHub integration.
